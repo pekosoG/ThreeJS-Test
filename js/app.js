@@ -33,6 +33,24 @@ var example= (function(){
         sphere.name="sphere";
         scene.add(sphere);
 
+        var material = new THREE.MeshBasicMaterial({
+            vertexColors: THREE.VertexColors,
+            side: THREE.DoubleSide
+        });
+
+        var triangleGeometry = new THREE.Geometry();
+        triangleGeometry.vertices.push(new THREE.Vector3(0.0,10.0,0.0));
+        triangleGeometry.vertices.push(new THREE.Vector3(-10.0,-10.0,0.0));
+        triangleGeometry.vertices.push(new THREE.Vector3(0.0,-10.0,0.0));
+
+        triangleGeometry.faces.push(new THREE.Face3(0,1,2));
+        triangleGeometry.faces[0].vertexColors[0] = new THREE.Color(0xFF0000);
+        triangleGeometry.faces[0].vertexColors[1] = new THREE.Color(0x00FF00);
+        triangleGeometry.faces[0].vertexColors[2] = new THREE.Color(0x0000FF);
+        
+        customGeometry = new THREE.Mesh(triangleGeometry,material);
+        scene.add(customGeometry);
+
         render();
     }
 
