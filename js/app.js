@@ -19,11 +19,19 @@ var example= (function(){
 
         box = new THREE.Mesh(
             new THREE.BoxGeometry(20,20,20),
-            new THREE.MeshBasicMaterial({color:0xFF0000})
+            new THREE.MeshBasicMaterial({color:0xFF0000, wireframe:true})
         );
         
         box.name="box";
         scene.add(box);
+
+        sphere = new THREE.Mesh(
+            new THREE.SphereGeometry(15,40,40),
+            new THREE.MeshBasicMaterial({color:0xFF0000, wireframe:true})
+        );
+
+        sphere.name="sphere";
+        scene.add(sphere);
 
         render();
     }
@@ -33,6 +41,10 @@ var example= (function(){
 
         box.rotation.y+=0.01;
         box.rotation.x+=0.02;
+        box.position.set(-20.0, 0, 0);
+
+        sphere.rotation.y+=0.01;
+        sphere.position.set(20.0, 0, 0);
 
         renderer.render(scene,camera);
         requestAnimationFrame(render);
